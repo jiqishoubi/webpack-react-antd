@@ -1,8 +1,14 @@
 import React from 'react'
-import Login from '@/pages/login'
+import { HashRouter } from 'react-router-dom'
+import { routes, renderChildren } from '@/router'
 
 function App() {
-  return <div>app<Login /></div>
+  return (
+    <HashRouter>
+      {renderChildren(routes)}
+    </HashRouter>
+  )
 }
 
 export default App
+
