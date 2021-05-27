@@ -31,6 +31,11 @@ module.exports = {
         use: ["babel-loader"],
         include: path.resolve(__dirname, 'src'),
       },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
       // 编译样式
       {
         test: /\.css$/i,
@@ -78,7 +83,7 @@ module.exports = {
     host: '0.0.0.0',
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json", ".ts"], // 引入组件的时候可以省略这些后缀
+    extensions: [".js", ".jsx", ".json", ".ts", ".tsx"], // 引入组件的时候可以省略这些后缀
     // 设置路径别名
     alias: {
       '@': path.resolve(__dirname, 'src'),
