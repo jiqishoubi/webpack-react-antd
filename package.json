@@ -54,6 +54,11 @@
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "**/*.less": "stylelint --syntax less",
     "**/*.{js,jsx}": "npm run lint-staged:js",

@@ -4,7 +4,7 @@ import CustomHeader from '@/components/common/CustomHeader'
 import Side from '@/components/common/Side'
 import styles from './index.less'
 
-const a =222222
+const a =2222222
 
 function Index(props) {
   return (
