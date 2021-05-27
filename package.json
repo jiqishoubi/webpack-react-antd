@@ -4,7 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "dev": "webpack serve"
+    "dev": "webpack serve",
+    "lint-staged:js": "eslint --ext .js,.jsx "
   },
   "keywords": [],
   "author": "",

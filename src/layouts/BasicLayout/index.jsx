@@ -4,6 +4,8 @@ import CustomHeader from '@/components/common/CustomHeader'
 import Side from '@/components/common/Side'
 import styles from './index.less'
 
+const a = 1
+
 function Index(props) {
   return (
     <Fragment>
