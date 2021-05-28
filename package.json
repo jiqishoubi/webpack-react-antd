@@ -6,12 +6,14 @@
 	"scripts": {
 		"lint-staged:js": "eslint --ext .js,.jsx",
 		"precommit": "lint-staged",
-		"dev": "webpack serve"
+		"start": "webpack serve",
+		"build": "webpack"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"@ant-design/icons": "^4.6.2",
 		"ahooks": "^2.10.4",
 		"antd": "^4.16.0",
 		"axios": "^0.21.1",
@@ -26,6 +28,7 @@
 	"devDependencies": {
 		"@babel/cli": "^7.14.3",
 		"@babel/core": "^7.14.3",
+		"@babel/plugin-transform-runtime": "^7.14.3",
 		"@babel/preset-env": "^7.14.2",
 		"@babel/preset-react": "^7.13.13",
 		"@types/lodash": "^4.14.170",
@@ -33,6 +36,7 @@
 		"@typescript-eslint/parser": "^4.25.0",
 		"babel-eslint": "^10.1.0",
 		"babel-loader": "^8.2.2",
+		"babel-plugin-import": "^1.13.3",
 		"classnames": "^2.3.1",
 		"css-loader": "^5.2.6",
 		"eslint": "^7.27.0",

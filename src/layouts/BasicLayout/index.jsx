@@ -5,14 +5,13 @@ import Side from "@/components/common/Side";
 import styles from "./index.less";
 
 function Index(props) {
-	const a = 1;
-	console.log(a);
-
 	return (
 		<Fragment>
 			<CustomHeader />
 			<div className={styles.main_content}>
 				<Side />
+
+				{/* 右侧页面内容 */}
 				<div className={styles.page_content}>{renderChildren(props)}</div>
 			</div>
 		</Fragment>

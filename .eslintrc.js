@@ -15,5 +15,9 @@ module.exports = {
 		sourceType: "script"
 	},
 	plugins: ["react", "@typescript-eslint"],
-	rules: {}
+	rules: {
+		"react/display-name": "off",
+		"react/prop-types": [1, { ignore: ["children"] }],
+		"@typescript-eslint/no-var-requires": 0
+	}
 };

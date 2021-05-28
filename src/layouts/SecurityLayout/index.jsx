@@ -1,8 +1,19 @@
-// 鉴权
-import { renderChildren } from '@/router'
+import { renderChildren } from "@/router";
+
+const loginUrl = "/user/login";
 
 function Index(props) {
-  return renderChildren(props)
+	const { history, location } = props;
+
+	const isLogin = true;
+
+	if (!isLogin && location.pathname !== loginUrl) {
+		console.log("跳转login");
+		history.replace(loginUrl);
+		return;
+	}
+
+	return renderChildren(props);
 }
 
-export default Index
+export default Index;
