@@ -1,20 +1,37 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const cssLoader = {
-	loader: "css-loader",
-	options: {
-		// 启动css modules
-		modules: {
-			localIdentName: "[path][name]__[local]-_"
-		}
-	}
-};
 // 注：以下这种形式可以全局生效
 // :global(#lalala) {
 //   color: red;
 // }
 
+const cssLoader = {
+	loader: "css-loader",
+	options: {
+		// 启动css modules
+		modules: {
+			localIdentName: "[path][name]__[local]-_",
+			mode: (resourcePath) => {
+				if (resourcePath.indexOf("/node_modules/antd/") > -1) {
+					return "global";
+				}
+				return "local";
+			}
+		}
+	}
+};
+
+const lessLoader = {
+	loader: "less-loader",
+	options: {
+		lessOptions: { javascriptEnabled: true }
+	}
+};
+
+/**
+ *
+ */
 module.exports = {
 	mode: "development", // development production
 	entry: "./src/index.js",
@@ -32,7 +49,9 @@ module.exports = {
 					{
 						loader: "babel-loader",
 						options: {
-							plugins: ["@babel/plugin-transform-runtime"]
+							plugins: [
+								"@babel/plugin-transform-runtime" // async wait
+							]
 						}
 					}
 				],
@@ -50,15 +69,11 @@ module.exports = {
 			},
 			{
 				test: /\.less$/i,
-				use: ["style-loader", cssLoader, "less-loader"]
+				use: ["style-loader", cssLoader, lessLoader]
 			},
 			{
 				test: /\.s[ac]ss$/i,
-				use: [
-					"style-loader", // 将 JS 字符串生成为 style 节点
-					cssLoader, // 将 CSS 转化成 CommonJS 模块
-					"sass-loader" // 将 Sass 编译成 CSS
-				]
+				use: ["style-loader", cssLoader, lessLoader]
 			},
 			// 编译文件
 			{
@@ -77,8 +92,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: "./src/index.html",
-			title: "管理输出"
+			template: "./src/index.html"
 		})
 	],
 	resolve: {
@@ -89,8 +103,7 @@ module.exports = {
 		}
 	},
 	devServer: {
-		port: 8080,
+		port: 8084,
 		host: "0.0.0.0"
-	},
-	watch: true
+	}
 };

@@ -1,17 +1,19 @@
-import React from 'react'
-import styles from './index.less'
+import React from "react";
+import styles from "./index.less";
 
 /**
  * @param {object} props
- * @returns 
+ * @returns
  */
-function Index(props){
-  return (
-    <div className={styles.header_wrap}>
-      <div></div>
-      <div>账号</div>
-    </div>
-  )
+function Index(props) {
+	console.log(props);
+
+	return (
+		<div className={styles.header_wrap}>
+			<div></div>
+			<div>账号</div>
+		</div>
+	);
 }
 
-export default Index
+export default Index;

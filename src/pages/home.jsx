@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "antd";
+import { Button, Checkbox, Row } from "antd";
 import { useModel } from "@/models";
 
 function Index() {
@@ -13,16 +13,15 @@ function Index() {
 			<div style={{ height: 200, backgroundColor: "#ddd", margin: 20 }}>欢迎使用</div>
 			<div style={{ height: 200, backgroundColor: "#ddd", margin: 20 }}>欢迎使用</div>
 
-			<Button
-				onClick={() => {
-					dispatch("global/toggleCollapsedFunc");
-				}}
-				loading={btnLoading}
-			>
+			<Button type="primary" onClick={() => dispatch("global/toggleCollapsedFunc")} loading={btnLoading}>
 				toggle
 			</Button>
 
 			{isCollapsed ? "关闭！" : "打开！"}
+
+			<Row>
+				<Checkbox>啦啦</Checkbox>
+			</Row>
 		</div>
 	);
 }
