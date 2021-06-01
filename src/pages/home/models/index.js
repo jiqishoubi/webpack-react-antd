@@ -1,12 +1,10 @@
 import React from "react";
 import { generateLoadingModel, generateProvider, generateUseModel } from "@/models/utils.js";
-import global from "./global";
-import login from "./login";
+import main from "./main";
 
 const allModel = {
 	loading: generateLoadingModel(),
-	global,
-	login
+	main
 };
 
 /**
@@ -29,7 +27,14 @@ const ContextProvider = generateProvider({
  */
 const useModel = generateUseModel({
 	context: IndexContext,
-	allModel
+	allModel,
+	dealExport: (res) => {
+		return {
+			...res.state.main,
+			dispatch: res.dispatch,
+			getLoading: res.getLoading
+		};
+	}
 });
 
 export { ContextProvider, useModel };

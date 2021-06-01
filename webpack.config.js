@@ -13,7 +13,7 @@ const cssLoader = {
 		modules: {
 			localIdentName: "[path][name]__[local]-_",
 			mode: (resourcePath) => {
-				if (resourcePath.indexOf("/node_modules/antd/") > -1) {
+				if (resourcePath.indexOf("/node_modules/antd/") > -1 || resourcePath.indexOf("/node_modules/@ant-design/pro-layout") > -1) {
 					return "global";
 				}
 				return "local";
