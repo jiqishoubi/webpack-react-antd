@@ -5,9 +5,15 @@ import Side from "@/components/common/Side";
 import styles from "./index.less";
 
 function Index(props) {
+	const contentDOM = (
+		<div>
+			<div>logo</div>
+		</div>
+	);
+
 	return (
 		<Fragment>
-			<CustomHeader />
+			<CustomHeader contentDOM={contentDOM} />
 			<div className={styles.main_content}>
 				<Side />
 

@@ -29,16 +29,23 @@ const IndexContext = React.createContext();
 //   return getInitStateFunc();
 // };
 
-// reducer
+/**
+ * reducer 原生的dispatch触发的就是这个
+ * @param {*} allState
+ * @param {object} options
+ *
+ * @returns
+ */
 const reducer = (allState, options) => {
-	const { modelName, methodName, payload } = options;
+	const { modelName, methodName, payload, dispatch } = options;
 
 	const modelReducer = allModel[modelName].reducers?.[methodName];
 
 	const oldModelState = allState[modelName];
 	const newModelState = modelReducer({
 		state: oldModelState,
-		payload
+		payload,
+		dispatch
 	});
 
 	return lodash.cloneDeep({
@@ -82,8 +89,13 @@ const useModel = () => {
 			payload: {
 				type,
 				loading: flag
-			}
+			},
+			dispatch: thunkDispatch
 		});
+	}
+
+	function getLoading(type) {
+		return state.loading[type] || false;
 	}
 
 	/**
@@ -91,7 +103,7 @@ const useModel = () => {
 	 * @param {string} type // global/toggle
 	 * @param {*} payload // 自定义携带参数
 	 */
-	const thunkDispatch = (type, payload) => {
+	function thunkDispatch(type, payload) {
 		const modelName = type.split("/")[0];
 		const methodName = type.split("/")[1];
 
@@ -112,14 +124,16 @@ const useModel = () => {
 			dispatch({
 				modelName,
 				methodName,
-				payload
+				payload,
+				dispatch: thunkDispatch
 			});
 		}
-	};
+	}
 
 	return {
 		state,
-		dispatch: thunkDispatch
+		dispatch: thunkDispatch,
+		getLoading
 	};
 };
 

@@ -3,10 +3,10 @@ import { Button, Checkbox, Row } from "antd";
 import { useModel } from "@/models";
 
 function Index() {
-	const { state, dispatch } = useModel();
+	const { state, dispatch, getLoading } = useModel();
 
 	const isCollapsed = state.global.isCollapsed;
-	const btnLoading = state.loading["global/toggleCollapsedFunc"];
+	const btnLoading = getLoading("global/toggleCollapsedFunc");
 
 	return (
 		<div>

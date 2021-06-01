@@ -2,7 +2,7 @@ const model = {
 	name: "loading",
 	state: {},
 	reducers: {
-		setLoading({ state, payload }) {
+		setLoading({ state, payload, dispatch }) {
 			const { type, loading } = payload;
 
 			const newState = { ...state };

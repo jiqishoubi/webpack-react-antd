@@ -1,3 +1,5 @@
+import request from "@/utils/request";
+
 const initialState = {
 	token: "",
 	userInfo: null
@@ -7,12 +9,22 @@ const model = {
 	name: "login",
 	state: initialState,
 	actions: {
-		async login({ dispatch, getState, payload }) {
-			console.log("1");
+		async getInitInfo({ dispatch, getState, payload }) {
+			dispatch("login/getUserInfo");
+		},
+		async getUserInfo({ dispatch, getState, payload }) {
+			const data = await request({
+				url: "/web/getLoginUserInfo"
+			});
+			if (data) {
+				dispatch("login/save", {
+					userInfo: data
+				});
+			}
 		}
 	},
 	reducers: {
-		save({ state, payload }) {
+		save({ state, payload, dispatch }) {
 			return {
 				...state,
 				...payload

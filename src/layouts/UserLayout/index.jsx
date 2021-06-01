@@ -1,12 +1,13 @@
 import React from "react";
+import Footer from "@/components/common/Footer";
 import { renderChildren } from "@/router";
+import styles from "./index.less";
 
 function Index(props) {
-	console.log("user", props);
 	return (
-		<div>
-			user
-			{renderChildren(props)}
+		<div className={styles.container}>
+			<div className={styles.content}>{renderChildren(props)}</div>
+			<Footer />
 		</div>
 	);
 }

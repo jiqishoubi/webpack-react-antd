@@ -1,13 +1,27 @@
+import { useEffect, useMemo } from "react";
+import { useHistory } from "react-router";
+import { useModel } from "@/models";
 import { renderChildren } from "@/router";
+import { STORAGE_TOKEN_KEY } from "@/utils/consts";
 
 const loginUrl = "/user/login";
 
 function Index(props) {
-	const { history, location } = props;
+	const history = useHistory();
+	const { location } = history;
+	const { state, dispatch } = useModel();
 
-	const isLogin = true;
+	const token = useMemo(() => {
+		return localStorage.getItem(STORAGE_TOKEN_KEY);
+	}, []);
 
-	if (!isLogin && location.pathname !== loginUrl) {
+	useEffect(() => {
+		if (token && !state.login.userInfo) {
+			dispatch("login/getInitInfo");
+		}
+	}, []);
+
+	if (!token && location.pathname !== loginUrl) {
 		console.log("跳转login");
 		history.replace(loginUrl);
 		return;
