@@ -109,7 +109,7 @@ export function generateUseModel({ context, allModel, dealExport }) {
 
 		/**
 		 * 最终暴露出去的，外面用到的dispatch 可以处理异步
-		 * @param {string} type // global/toggle
+		 * @param {string} type // 'global/toggle'
 		 * @param {*} payload // 自定义携带参数
 		 */
 		function thunkDispatch(type, payload) {

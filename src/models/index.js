@@ -1,5 +1,5 @@
 import React from "react";
-import { generateLoadingModel, generateProvider, generateUseModel } from "@/models/utils.js";
+import { generateLoadingModel, generateProvider, generateUseModel } from "@/models/core.js";
 import global from "./global";
 import login from "./login";
 
