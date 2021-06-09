@@ -38,6 +38,10 @@ const routes = [
 						path: "/home",
 						component: React.lazy(() => import("../pages/home"))
 					},
+					{
+						path: "/home2",
+						component: React.lazy(() => import("../pages/home2"))
+					},
 					{ component: Page404 }
 				]
 			},
