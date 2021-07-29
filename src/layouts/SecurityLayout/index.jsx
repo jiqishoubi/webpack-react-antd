@@ -16,11 +16,14 @@ function Index(props) {
 	}, []);
 
 	useEffect(() => {
-		if (token && !state.login.userInfo) {
+		if (token && location.pathname !== loginUrl && !state.login.userInfo) {
 			dispatch("login/getInitInfo");
 		}
 	}, []);
 
+	/**
+	 * 渲染
+	 */
 	if (!token && location.pathname !== loginUrl) {
 		console.log("跳转login");
 		history.replace(loginUrl);

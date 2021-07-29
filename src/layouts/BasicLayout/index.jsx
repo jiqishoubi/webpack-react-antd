@@ -6,7 +6,7 @@ import ProLayout from "@ant-design/pro-layout";
 import { renderChildren } from "@/router";
 import CustomHeader from "@/components/common/CustomHeader";
 import Side from "@/components/common/Side";
-import KeepAliveTabs from "@/components/common/KeepAlive/KeepAliveTabs";
+// import KeepAliveTabs from "@/components/common/KeepAlive/KeepAliveTabs";
 import defaultSettings from "../../../config/defaultSettings";
 import styles from "./index.less";
 
@@ -52,7 +52,6 @@ function Index(props) {
 					);
 				}}
 				subMenuItemRender={(_, dom) => {
-					console.log(_);
 					return <Link></Link>;
 				}}
 				menuDataRender={menuDataRender}

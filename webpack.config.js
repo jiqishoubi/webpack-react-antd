@@ -30,7 +30,7 @@ const lessLoader = {
 };
 
 /**
- *
+ * config
  */
 module.exports = {
 	mode: "development", // development production
